@@ -15,12 +15,17 @@ class HomePage extends StatelessWidget {
   }
 
   _body(context) {
-    return Container(
-      color: Colors.white,
-      padding: const EdgeInsets.all(16),
+    return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[_text(), _pageView(), _buttons()],
+        children: <Widget>[
+          _text(),
+          _pageView(),
+          _buttons(),
+          _text(),
+          _pageView(),
+          _buttons(),
+        ],
       ),
     );
   }
