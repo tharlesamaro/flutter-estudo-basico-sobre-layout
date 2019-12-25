@@ -1,3 +1,4 @@
+import 'package:aula01/pages/hello_page1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -106,6 +107,8 @@ class HomePage extends StatelessWidget {
   }
 
   void _onClickOk(BuildContext context) {
-    Navigator.push(context, route);
+    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+      return HelloPage1();
+    }));
   }
 }
