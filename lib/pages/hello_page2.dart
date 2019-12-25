@@ -21,6 +21,6 @@ class HelloPage2 extends StatelessWidget {
   }
 
   void _onClickVoltar(context) {
-    Navigator.pop(context);
+    Navigator.pop(context, "Tela 2");
   }
 }
