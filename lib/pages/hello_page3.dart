@@ -1,3 +1,5 @@
+import 'package:aula01/utils/navigator.dart';
+import 'package:aula01/widgets/blue_button.dart';
 import 'package:flutter/material.dart';
 
 class HelloPage3 extends StatelessWidget {
@@ -13,14 +15,14 @@ class HelloPage3 extends StatelessWidget {
 
   _body(context) {
     return Center(
-      child: RaisedButton(
-        child: Text("Voltar"),
+      child: BlueButton(
+        "Voltar",
         onPressed: () => _onClickVoltar(context),
       ),
     );
   }
 
   void _onClickVoltar(context) {
-    Navigator.pop(context, "Tela 3");
+    pop(context, "Tela 3");
   }
 }
