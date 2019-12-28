@@ -7,7 +7,14 @@ class Dog {
   Dog(this.nome, this.foto);
 }
 
-class HelloListView extends StatelessWidget {
+class HelloListView extends StatefulWidget {
+  @override
+  _HelloListViewState createState() => _HelloListViewState();
+}
+
+class _HelloListViewState extends State<HelloListView> {
+  bool _gridView = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,11 +23,19 @@ class HelloListView extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.list),
-            onPressed: () => print("Lista"),
+            onPressed: () {
+              setState(() {
+                _gridView = false;
+              });
+            },
           ),
           IconButton(
             icon: Icon(Icons.grid_on),
-            onPressed: () => print("Grid"),
+            onPressed: () {
+              setState(() {
+                _gridView = true;
+              });
+            }
           )
         ],
       ),
@@ -37,36 +52,51 @@ class HelloListView extends StatelessWidget {
       Dog("Pastor", "assets/images/dog5.png"),
     ];
 
-    return GridView.builder(
-      gridDelegate:
-          SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+    if (_gridView) {
+      return GridView.builder(
+        gridDelegate:
+            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        itemCount: dogs.length,
+        itemBuilder: (context, index) {
+          return _itemView(dogs, index);
+        },
+      );
+    }
+
+    return ListView.builder(
+      itemExtent: 350,
       itemCount: dogs.length,
       itemBuilder: (context, index) {
-        Dog dog = dogs[index];
-        return Stack(
-          fit: StackFit.expand,
-          children: <Widget>[
-            _img(dog.foto),
-            Align(
-              alignment: Alignment.topLeft,
-              child: Container(
-                margin: EdgeInsets.all(10),
-                padding: EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                    color: Colors.black45,
-                    borderRadius: BorderRadius.circular(16)),
-                child: Text(
-                  dog.nome,
-                  style: TextStyle(
-                    fontSize: 26,
-                    color: Colors.white,
-                  ),
-                ),
+        return _itemView(dogs, index);
+      },
+    );
+  }
+
+  Stack _itemView(List<Dog> dogs, int index) {
+    Dog dog = dogs[index];
+    return Stack(
+      fit: StackFit.expand,
+      children: <Widget>[
+        _img(dog.foto),
+        Align(
+          alignment: Alignment.topLeft,
+          child: Container(
+            margin: EdgeInsets.all(10),
+            padding: EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: Colors.black45,
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Text(
+              dog.nome,
+              style: TextStyle(
+                fontSize: 26,
+                color: Colors.white,
               ),
             ),
-          ],
-        );
-      },
+          ),
+        ),
+      ],
     );
   }
 
