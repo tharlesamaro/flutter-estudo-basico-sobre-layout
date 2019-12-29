@@ -18,25 +18,14 @@ class HomePage extends StatelessWidget {
         ),
       ),
       body: _body(context),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          FloatingActionButton(
-            child: Icon(Icons.add),
-            onPressed: () {
-              _onclickFab();
-            },
-          ),
-          SizedBox(
-            width: 8,
-          ),
-          FloatingActionButton(
-            child: Icon(Icons.favorite),
-            onPressed: () {
-              _onclickFab();
-            },
-          ),
-        ],
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          _onclickFab();
+        },
+      ),
+      drawer: Drawer(
+
       ),
     );
   }
