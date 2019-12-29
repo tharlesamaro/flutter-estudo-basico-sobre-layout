@@ -6,6 +6,7 @@ import 'package:aula01/utils/navigator.dart';
 import 'package:aula01/widgets/blue_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -133,7 +134,17 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  _onClickToast() {}
+  _onClickToast() {
+    Fluttertoast.showToast(
+        msg: "Flutter é muito legal",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIos: 5,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
+  }
 
   _text() {
     return Text(
