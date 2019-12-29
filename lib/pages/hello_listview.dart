@@ -1,3 +1,5 @@
+import 'package:aula01/pages/dog_page.dart';
+import 'package:aula01/utils/navigator.dart';
 import 'package:flutter/material.dart';
 
 class Dog {
@@ -30,13 +32,12 @@ class _HelloListViewState extends State<HelloListView> {
             },
           ),
           IconButton(
-            icon: Icon(Icons.grid_on),
-            onPressed: () {
-              setState(() {
-                _gridView = true;
-              });
-            }
-          )
+              icon: Icon(Icons.grid_on),
+              onPressed: () {
+                setState(() {
+                  _gridView = true;
+                });
+              })
         ],
       ),
       body: _body(),
@@ -72,31 +73,34 @@ class _HelloListViewState extends State<HelloListView> {
     );
   }
 
-  Stack _itemView(List<Dog> dogs, int index) {
+  _itemView(List<Dog> dogs, int index) {
     Dog dog = dogs[index];
-    return Stack(
-      fit: StackFit.expand,
-      children: <Widget>[
-        _img(dog.foto),
-        Align(
-          alignment: Alignment.topLeft,
-          child: Container(
-            margin: EdgeInsets.all(10),
-            padding: EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Colors.black45,
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Text(
-              dog.nome,
-              style: TextStyle(
-                fontSize: 26,
-                color: Colors.white,
+    return GestureDetector(
+      onTap: () => push(context, DogPage(dog)),
+      child: Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          _img(dog.foto),
+          Align(
+            alignment: Alignment.topLeft,
+            child: Container(
+              margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.black45,
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Text(
+                dog.nome,
+                style: TextStyle(
+                  fontSize: 26,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
