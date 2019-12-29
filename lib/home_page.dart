@@ -1,3 +1,4 @@
+import 'package:aula01/drawer_list.dart';
 import 'package:aula01/pages/hello_listview.dart';
 import 'package:aula01/pages/hello_page1.dart';
 import 'package:aula01/pages/hello_page2.dart';
@@ -24,9 +25,7 @@ class HomePage extends StatelessWidget {
           _onclickFab();
         },
       ),
-      drawer: Drawer(
-
-      ),
+      drawer: DrawerList(),
     );
   }
 
